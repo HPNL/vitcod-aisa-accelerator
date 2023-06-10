@@ -13,8 +13,8 @@ class PE extends Module {
   
 val macLines = Seq.fill(4)(Module(new MACLine()))
   for (i <- 0 until 4) {
-    instances(i).io.k_s_in := io.k_s_in(8*i-1, 8*i).asTypeOf(io.k_s_in)
-    instances(i).io.q_v_in := io.q_v_in(8*i-1, 8*i).asTypeOf(io.q_v_in)
+    macLines(i).io.k_s_in := io.k_s_in(8*i-1, 8*i).asTypeOf(io.k_s_in)
+    macLines(i).io.q_v_in := io.q_v_in(8*i-1, 8*i).asTypeOf(io.q_v_in)
 
 }
 }

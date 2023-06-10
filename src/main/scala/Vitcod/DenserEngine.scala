@@ -8,10 +8,10 @@ class DenserEngine extends Module {
   val io = IO(new Bundle {
     
   })
-  val weight =Wire(UInt(8.w))
-  val output = Wire(UInt(8.w))
-  val q_v = Wire(UInt(8.w))
-  val k_s = Wire(UInt(8.w))
+  val weight =Wire(UInt(8.W))
+  val output = Wire(UInt(8.W))
+  val q_v = Wire(UInt(8.W))
+  val k_s = Wire(UInt(8.W))
 
 
 
