@@ -21,5 +21,4 @@ class MAC extends Module {
   io.out := Mux(io.out_sel,sum,mul)
   sum_in := Mux(io.sum_in_sel,io.out,io.start_in)
   
-
 }
