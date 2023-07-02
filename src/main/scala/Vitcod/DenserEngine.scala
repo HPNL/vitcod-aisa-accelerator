@@ -3,6 +3,7 @@
 package vitcod
 
 import chisel3._
+import chisel3.stage.ChiselStage
 
 class DenserEngine extends Module {
   val io = IO(new Bundle {

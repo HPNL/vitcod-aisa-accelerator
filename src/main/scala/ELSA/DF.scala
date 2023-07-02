@@ -1,6 +1,7 @@
 package ELSA
 
 import chisel3._
+import chisel3.stage.ChiselStage
 
 class DF extends Module {
   val io = IO(new Bundle {
@@ -30,6 +31,7 @@ class DF extends Module {
     val keyNormMemoryOut = Wire(UInt(8.W))
 
     val outDivIn = Wire(UInt(8.W))
+    val outDivOut = Wire(UInt(8.W))
 
     val candidateSelectionOut = Wire(UInt(8.W))
     
@@ -47,8 +49,8 @@ class DF extends Module {
     candidateSelection.io.keyNorm := keyNormMemoryOut
     candidateSelectionOut := candidateSelection.io.output
 
-    hashComputation.io.key := keyVec
-    hashComputation.io.query := queryVec
+    hashComputation.io.key := io.keyVec
+    hashComputation.io.query := io.queryVec
     queryBufferIn := hashComputation.io.queryOut
     keyHashMemoryIn := hashComputation.io.keyOut
 
@@ -62,15 +64,13 @@ class DF extends Module {
     keyNormMemoryIn := normComputation.io.output
 
     outputDiv.io.input := io.output
-    outDivOut := outputDiv.io.output
+    outDivOut := outputDiv.io.outputMem
 
     queryHashBuffer.io.input := queryBufferIn
     queryBufferOut := queryHashBuffer.io.output
 
-    
-        
+}
 
-    
-    
-
+object Main extends App {
+  (new ChiselStage).emitVerilog(new DF())
 }

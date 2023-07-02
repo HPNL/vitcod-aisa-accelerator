@@ -1,4 +1,8 @@
-class SparserEngine extends Module {
+package vitcod
+
+import chisel3._
+
+class Engine extends Module {
   val io = IO(new Bundle {
     
   })
